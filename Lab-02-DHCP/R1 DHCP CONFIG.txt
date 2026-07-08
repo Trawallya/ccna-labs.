@@ -1,0 +1,95 @@
+
+Router> en
+Router# config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)# host R1
+R1(config)#
+R1(config)# int g0/0/0
+R1(config-if)# des
+R1(config-if)# description <<< CONNECTED-TO-SWITCH >>>
+R1(config-if)# ip add 192.168.1.1 255.255.255.0
+R1(config-if)# no shut
+
+R1(config-if)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/0/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0/0, changed state to up
+
+R1(config-if)#
+R1(config-if)# exit
+R1(config)#
+R1(config)# ip dhc
+R1(config)# ip dhcp ex
+R1(config)# ip dhcp excluded-address 192.168.1.1 192.168.1.10
+R1(config)# ip dh
+R1(config)# ip dhcp po
+R1(config)# ip dhcp pool LAN_POOL
+R1(dhcp-config)# net
+R1(dhcp-config)# network 192.168.1.0 255.255.255.0
+R1(dhcp-config)# de
+R1(dhcp-config)# default-router 192.168.1.1
+R1(dhcp-config)# dn
+R1(dhcp-config)# dns-server 8.8.8.8
+R1(dhcp-config)# do
+R1(dhcp-config)# domain-name alagietrawally.com
+R1(dhcp-config)# le
+R1(dhcp-config)# lea
+R1(dhcp-config)# leas
+R1(dhcp-config)# lease 7
+                 ^
+% Invalid input detected at '^' marker.
+	
+R1(dhcp-config)#exit
+R1(config)# end
+R1#
+%SYS-5-CONFIG_I: Configured from console by console
+
+R1# cop
+R1# copy ru
+R1# copy running-config st
+R1# copy running-config startup-config 
+Destination filename [startup-config]? y
+%Error copying nvram:y (Invalid argument)
+R1# wr
+Building configuration...
+[OK]
+R1#
+R1# sho ip dhcp pool
+
+Pool LAN_POOL :
+ Utilization mark (high/low)    : 100 / 0
+ Subnet size (first/next)       : 0 / 0 
+ Total addresses                : 254
+ Leased addresses               : 0
+ Excluded addresses             : 1
+ Pending event                  : none
+
+ 1 subnet is currently in the pool
+ Current index        IP address range                    Leased/Excluded/Total
+ 192.168.1.1          192.168.1.1      - 192.168.1.254     0    / 1     / 254
+R1# sho ip dhcp binding
+IP address       Client-ID/              Lease expiration        Type
+                 Hardware address
+R1# sho ip dhcp binding
+IP address       Client-ID/              Lease expiration        Type
+                 Hardware address
+192.168.1.11     000A.41B1.5139           --                     Automatic
+192.168.1.12     0001.9747.578B           --                     Automatic
+192.168.1.13     0090.211A.C731           --                     Automatic
+192.168.1.14     00E0.8FC6.1313           --                     Automatic
+192.168.1.15     00E0.F9CA.6C8D           --                     Automatic
+192.168.1.16     0030.F246.5E1B           --                     Automatic
+R1# sho ip dhcp pool
+
+Pool LAN_POOL :
+ Utilization mark (high/low)    : 100 / 0
+ Subnet size (first/next)       : 0 / 0 
+ Total addresses                : 254
+ Leased addresses               : 6
+ Excluded addresses             : 1
+ Pending event                  : none
+
+ 1 subnet is currently in the pool
+ Current index        IP address range                    Leased/Excluded/Total
+ 192.168.1.1          192.168.1.1      - 192.168.1.254     6    / 1     / 254
+R1#
