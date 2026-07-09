@@ -21,14 +21,14 @@ Welcome to my CCNA networking portfolio.
 
 | Lab | Topic |
 |------|-------|
-| Lab 1 | Basic Network |
-| Lab 2 | DHCP |
-| Lab 3 | NAT/PAT |
-| Lab 4 | Static Routing |
-| Lab 5 | Default Routing |
-| Lab 6 | Wireless Network |
-| Lab 7 | VLANs |
-| Lab 8 | Inter-VLAN Routing |
+| Lab 1 | Basic VLAN Segmentation |
+| Lab 2 | Trunk links Between Switches |
+| Lab 3 | Inter-VLAN-Routing |
+| Lab 4 | OSPF |
+| Lab 5 | DHCP On Cisco Router IOS |
+| Lab 6 | Static Routing |
+| Lab 7 | Default Routing |
+| Lab 8 | NAT and PAT |
 
 ## Tools
 
