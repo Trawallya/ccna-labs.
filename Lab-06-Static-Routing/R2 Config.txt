@@ -1,0 +1,130 @@
+Router>
+Router> en
+Router# config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)# host R2
+R2(config)# int g0/0
+R2(config-if)# des ******CONNECTED-TO-R1******
+R2(config-if)# ip add 212.0.133.2 255.255.255.252
+R2(config-if)# no shut
+
+R2(config-if)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0, changed state to up
+exit
+R2(config)# int g0/1
+R2(config-if)# des ******CONNECTED-TO-R3******
+R2(config-if)# ip add 172.0.0.1 255.255.255.252
+R2(config-if)# no shut
+
+R2(config-if)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/1, changed state to up
+exit
+R2(config)#
+
+
+
+
+
+
+
+
+R2 con0 is now available
+
+
+
+
+
+
+Press RETURN to get started.
+
+
+
+
+
+
+
+
+
+
+
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to up
+
+
+R2>
+R2> en
+R2# config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R2(config)# ip route 192.168.10.0 255.255.255.0 172.0.0.2
+R2(config)# ip route 192.168.20.0 255.255.255.0 212.0.133.1
+R2(config)# do sho ip route
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default, U - per-user static route, o - ODR
+       P - periodic downloaded static route
+
+Gateway of last resort is not set
+
+     172.0.0.0/16 is variably subnetted, 2 subnets, 2 masks
+C       172.0.0.0/30 is directly connected, GigabitEthernet0/1
+L       172.0.0.1/32 is directly connected, GigabitEthernet0/1
+S    192.168.10.0/24 [1/0] via 172.0.0.2
+S    192.168.20.0/24 [1/0] via 212.0.133.1
+     212.0.133.0/24 is variably subnetted, 2 subnets, 2 masks
+C       212.0.133.0/30 is directly connected, GigabitEthernet0/0
+L       212.0.133.2/32 is directly connected, GigabitEthernet0/0
+
+R2(config)# no ip route 192.168.10.0 255.255.255.0 172.0.0.2
+R2(config)# no ip route 192.168.20.0 255.255.255.0 212.0.133.1
+R2(config)# do sho ip route
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default, U - per-user static route, o - ODR
+       P - periodic downloaded static route
+
+Gateway of last resort is not set
+
+     172.0.0.0/16 is variably subnetted, 2 subnets, 2 masks
+C       172.0.0.0/30 is directly connected, GigabitEthernet0/1
+L       172.0.0.1/32 is directly connected, GigabitEthernet0/1
+     212.0.133.0/24 is variably subnetted, 2 subnets, 2 masks
+C       212.0.133.0/30 is directly connected, GigabitEthernet0/0
+L       212.0.133.2/32 is directly connected, GigabitEthernet0/0
+
+R2(config)# ip route 192.168.10.0 255.255.255.0 212.0.133.1
+R2(config)# ip route 192.168.20.0 255.255.255.0 172.0.0.2
+R2(config)# do sho ip route
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default, U - per-user static route, o - ODR
+       P - periodic downloaded static route
+
+Gateway of last resort is not set
+
+     172.0.0.0/16 is variably subnetted, 2 subnets, 2 masks
+C       172.0.0.0/30 is directly connected, GigabitEthernet0/1
+L       172.0.0.1/32 is directly connected, GigabitEthernet0/1
+S    192.168.10.0/24 [1/0] via 212.0.133.1
+S    192.168.20.0/24 [1/0] via 172.0.0.2
+     212.0.133.0/24 is variably subnetted, 2 subnets, 2 masks
+C       212.0.133.0/30 is directly connected, GigabitEthernet0/0
+L       212.0.133.2/32 is directly connected, GigabitEthernet0/0
+
+R2(config)# end
+R2#
+%SYS-5-CONFIG_I: Configured from console by console
+wr
+Building configuration...
+[OK]
+R2#

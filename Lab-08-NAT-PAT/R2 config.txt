@@ -1,0 +1,95 @@
+Router> en
+Router# config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)# host R2
+R2(config)# int g0/0
+R2(config-if)# des ******CONNECTED-TO-R1******
+R2(config-if)# ip add 203.0.133.2 255.255.255.252
+R2(config-if)# no shut
+
+R2(config-if)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0, changed state to up
+exit
+R2(config)# int g0/1
+R2(config-if)# ip add 8.8.8.1 255.255.255.0
+R2(config-if)# des ******CONNECTED-TO-SW2******
+R2(config-if)# no shut
+
+R2(config-if)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/1, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to up
+ exit
+R2(config)#
+
+
+
+
+
+
+
+
+R2 con0 is now available
+
+
+
+
+
+
+Press RETURN to get started.
+
+
+
+
+
+
+
+
+
+
+
+
+
+R2>
+R2> en
+R2# config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R2(config)# ip route 0.0.0.0 0.0.0.0 203.0.133.1
+R2(config)#
+
+
+
+
+
+
+
+
+R2 con0 is now available
+
+
+
+
+
+
+Press RETURN to get started.
+
+
+
+
+
+
+
+
+
+
+
+
+
+R2>
+R2> en
+R2#wr
+Building configuration...
+[OK]
+R2#
